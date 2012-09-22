@@ -15,3 +15,8 @@ How distribution works ?
 - Clustered DBMS if needed (though a single DBMS node can probably handle the load)
 - Web frontends can be set on several federated instances (i.e. anyone can set up a read only instance, and people can get their instance to be able to read-write by getting known and trusted ; this can probably be improved though)
 - git repos can be on any instance, and the central instance has a table listing which known instance has which repo
+
+Dependencies
+============
+- Dulwich, for python-git interaction http://www.samba.org/~jelmer/dulwich/
+- django-social-auth for authentication handling https://github.com/omab/django-social-auth
