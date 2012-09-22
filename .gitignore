@@ -1,4 +1,5 @@
 *.py[co]
+*.sw[po]
 
 # Packages
 *.egg
@@ -25,3 +26,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# Settings
+gitathing/settings_local.py
