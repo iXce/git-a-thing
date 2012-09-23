@@ -162,8 +162,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #eeeeee;
-  background-color: #293b63;
+  color: #222222;
+  background-color: #a3c5ff;
 }
 
 a {
@@ -1517,7 +1517,7 @@ select:focus:required:invalid:focus {
 
 .help-block,
 .help-inline {
-  color: #ffffff;
+  color: #484848;
 }
 
 .help-block {
@@ -5728,7 +5728,7 @@ a.badge:hover {
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
-  background-color: #314f90;
+  background-color: #c0d7ff;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -5739,14 +5739,14 @@ a.badge:hover {
   font-size: 60px;
   line-height: 1;
   letter-spacing: -1px;
-  color: #ffffff;
+  color: #333333;
 }
 
 .hero-unit p {
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  color: #eeeeee;
+  color: #222222;
 }
 
 .pull-right {
