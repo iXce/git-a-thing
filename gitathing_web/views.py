@@ -9,4 +9,4 @@ def home(request):
 def login_error(request):
     """Error view"""
     messages = get_messages(request)
-    return render(request, 'error.html', {'messages': messages})
+    return render(request, 'login_error.html', {'messages': messages})
