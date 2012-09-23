@@ -1,8 +1,12 @@
 BASE_PATH = "/path/to/gitathing"
 
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
 ADMINS = (
     ('Git-a-thing webmaster', 'webmaster@gitathing.org'),
 )
+MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
