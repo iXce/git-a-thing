@@ -9,7 +9,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('',
     url(r'', include('gitathing_web.urls')),
-    url(r'', include('social_auth.urls')),
+    url(r'^auth/', include('social_auth.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ) + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) \
