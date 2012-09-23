@@ -6,7 +6,7 @@ from django.contrib.messages.api import get_messages
 def home(request):
     return render(request, "home.html", {})
 
-def error(request):
+def login_error(request):
     """Error view"""
     messages = get_messages(request)
     return render(request, 'error.html', {'messages': messages})
