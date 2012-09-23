@@ -140,6 +140,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_ERROR_URL = "/login-error/"
+LOGIN_REDIRECT_URL = "/"
 
 INSTALLED_APPS = (
     'django.contrib.auth',

@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Git-a-thing</title>
+    <title>Git-a-thing{% block extratitle%}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Git-a-thing is a git-based distributed object design sharing platform">
     <meta name="author" content="Git-a-thing team">
@@ -45,20 +45,29 @@
                 <input type="text" class="search-query span2" placeholder="Search">
             </form>
             <ul class="nav pull-right">
+{% spaceless %}
 {% if not user.is_authenticated %}
 {% block login %}
-{% spaceless %}
     <li class="login"><span>Login using...</span>
     {% for name in social_auth.backends.oauth2 %}
         <a rel="nofollow" href="{% url "socialauth_begin" name %}"><img src="/static/authbuttons/{{ name|title|lower }}_32.png" alt="{{ name|title }}" /></a>
   {% endfor %}</li>
-{% endspaceless %}
 {% endblock %}
 {% else %}
 {% block userbar %}
-  <li><a href="{% url "django.contrib.auth.views.logout" %}">Logout</a></li>
+            <li id="nav_user_dropdown" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url "gitathing_post_design" %}">Post a new design</a></li>
+                <li><a href="{% url "gitathing_manage_designs" %}">Manage your designs</a></li>
+                <li class="divider"></li>
+                <li><a href="{% url "gitathing_edit_profile" %}">Edit your profile</a></li>
+                <li><a href="{% url "django.contrib.auth.views.logout" %}">Logout</a></li>
+              </ul>
+            </li>
 {% endblock %}
 {% endif %}
+{% endspaceless %}
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -81,5 +90,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+{% block scripts %}
+{% endblock %}
   </body>
 </html>

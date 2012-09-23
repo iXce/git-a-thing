@@ -1,13 +1,50 @@
 {% extends "base.html" %}
+{% load url from future %}
+
+{% block extratitle%} &mdash; Select your username{% endblock %}
 
 {% block main %}
-<form action="" method="post">
-    {% csrf_token %}
-    <p>
-        <label for="id_username">Username</label>
-        <input type="text" name="username" id="id_username" value="" />
-    </p>
+<div class="row">
+    <div class="span6 offset3">
+        <h2>Welcome {{ backend|capfirst }} user {{ username }} !</h2>
+        <h3>Please select your Git-a-thing username :</h3>
+        <form action="{% url 'gitathing_username_form' %}" method="post" id="username_form">
+            {% csrf_token %}
+            <p>
+                <label for="id_username">Username</label>
+                <input type="text" name="username" id="id_username" value="" />
+                <span id="availability"></span>
+            </p>
 
-    <button type="submit" class="btn">Send</button>
-</form>
+            <button type="submit" id="submit" disabled="disabled" class="btn">Select</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var valid = false;
+    function check_username() {
+    $.get({% url 'gitathing_username_available' %}, {username: $("#id_username").val()},
+        function(data){
+            if(data == "True"){
+                $('#availability').html("<i class=\"icon-ok\"></i> Available");
+                $('#submit').removeAttr("disabled");
+                valid = true;
+            } else {
+                $('#submit').attr("disabled", "disabled");
+                $('#availability').html("<i class=\"icon-remove\"></i> Unavailable");
+                valid = false;
+            }
+    });
+    }
+    function on_username_change(){
+     $("#id_username").bind('input',function() {check_username()});
+     $('#username_form').submit(function() {
+        return valid;
+     });
+    }
+    $(document).ready(on_username_change);
+</script>  
 {% endblock %}

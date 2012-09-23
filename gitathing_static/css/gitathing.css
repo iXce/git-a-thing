@@ -1,3 +1,19 @@
+.navbar .brand {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.navbar .nav {
+  margin-right: 0;
+}
+
+.navbar .navbar-search {
+  margin-left: 10px;
+}
+
+.navbar .nav > li#nav_user_dropdown > a {
+  border: 0;
+}
+
 .navbar .nav > li.login > a {
   display: block;
   float: left;
