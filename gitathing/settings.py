@@ -139,6 +139,8 @@ AUTHENTICATION_BACKENDS = (
 #   'django.contrib.auth.backends.ModelBackend',
 )
 
+LOGIN_ERROR_URL = "/login-error/"
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
