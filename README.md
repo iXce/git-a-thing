@@ -25,3 +25,4 @@ Dependencies
 - Dulwich, for python-git interaction http://www.samba.org/~jelmer/dulwich/
 - django-social-auth for authentication handling https://github.com/omab/django-social-auth
 - django-rest-framework for the RESTful API http://django-rest-framework.org/
+- django-licenses for License management http://bitbucket.org/jezdez/django-licenses/

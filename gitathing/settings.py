@@ -133,7 +133,7 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_ERROR_URL = "/login-error/"
 LOGIN_REDIRECT_URL = "/"
 
-#AUTH_PROFILE_MODULE = 'gitathing_web.Profile'
+AUTH_PROFILE_MODULE = 'gitathing_web.Profile'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'social_auth',
+    'licenses',
     'gitathing_web',
 )
 

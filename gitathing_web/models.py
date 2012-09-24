@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from licenses.fields import LicenseField
 
 class Profile(models.Model):
     """User profile"""
@@ -16,12 +17,6 @@ class Media(models.Model):
     added = models.DateTimeField(auto_now_add = True)
     uploader = models.ForeignKey(User)
 
-class License(models.Model):
-    """Design license"""
-    name = models.CharField(max_length = 150)
-    url = models.URLField(blank = True)
-    full_text = models.TextField(blank = True)
-
 class Design(models.Model):
     """Database entry for a git-repository (possibly pointing to a specific git branch)"""
     designer = models.ForeignKey(User)
@@ -31,7 +26,7 @@ class Design(models.Model):
     branch = models.CharField(max_length = 100, editable = False, blank = True, null = True)
     parent = models.ForeignKey("Design", null = True, blank = True)
     derived_from = models.ManyToManyField("Design", related_name = "derivatives")
-    license = models.ForeignKey(License)
+    license = LicenseField()
     description = models.TextField(blank = True)
     instructions = models.TextField(blank = True)
     created = models.DateTimeField(auto_now_add = True)
