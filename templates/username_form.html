@@ -6,17 +6,12 @@
 {% block main %}
 <div class="row">
     <div class="span6 offset3">
-        <h2>Welcome {{ backend|capfirst }} user {{ username }} !</h2>
+        <h2>Welcome {{ backend|cut:"-oauth2"|capfirst }} user {{ username }} !</h2>
         <form action="{% url 'gitathing_username_form' %}" method="post" id="username_form">
             {% csrf_token %}
             <legend>Please select your Git-a-thing username :</legend>
-            <p>
-                <label for="id_username">Username</label>
-                <input type="text" name="username" id="id_username" value="" />
-                <span id="availability"></span>
-            </p>
-
-            <button type="submit" id="submit" disabled="disabled" class="btn">Select</button>
+            {{ form.as_p }}
+            <button type="submit" id="submit" disabled="disabled" class="btn">Select</button> <span id="availability"></span>
         </form>
     </div>
 </div>
