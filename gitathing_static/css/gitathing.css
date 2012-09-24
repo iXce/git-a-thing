@@ -33,3 +33,17 @@ p.login-providers {
   width: 100%;
   text-align: center;
 }
+
+form.profileform .control-group {
+    width: 50%;
+    float: left;
+}
+
+form.profileform .control-group:nth-last-child(5) {
+    float: right;
+}
+
+form.profileform .control-group:nth-last-child(5) textarea {
+    height: 150px;
+    width: 100%;
+}

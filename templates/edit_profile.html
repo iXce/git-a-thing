@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load bootstrap %}
+
+{% block extratitle%} &mdash; Edit your profile{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="span6 offset3">
+        <form class="profileform centralform" action="{% url "gitathing_edit_profile" %}" method="post">
+            {% csrf_token %}
+            <legend>Edit your profile</legend>
+            {% if success %}
+            <div class="alert alert-success">  
+              <a class="close" data-dismiss="alert">×</a>  
+                <strong>Success!</strong> Your profile has been updated. 
+            </div>
+            {% endif %}
+            {{ form|bootstrap }}
+            <button type="submit" class="btn">Edit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

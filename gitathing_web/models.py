@@ -1,14 +1,25 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from licenses.fields import LicenseField
 
 class Profile(models.Model):
     """User profile"""
     user = models.ForeignKey(User)
-    display_name = models.CharField(max_length = 100)
-    email = models.CharField(max_length = 200)
-    location = models.CharField(max_length = 100)
-    about = models.TextField("About me")
+    display_name = models.CharField(max_length = 100, blank = True)
+    location = models.CharField(max_length = 100, blank = True)
+    about = models.TextField("About me", blank = True)
+
+    def __unicode__(self):
+        if self.display_name:
+            return self.display_name
+        else:
+            return unicode(self.user)
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.get_or_create(user = instance)
+post_save.connect(create_user_profile, sender = User)
 
 class Media(models.Model):
     """Static content not handled in git repositories"""

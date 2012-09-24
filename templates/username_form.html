@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load url from future %}
+{% load bootstrap %}
 
 {% block extratitle%} &mdash; Select your username{% endblock %}
 
@@ -10,7 +11,7 @@
         <form action="{% url 'gitathing_username_form' %}" method="post" id="username_form">
             {% csrf_token %}
             <legend>Please select your Git-a-thing username :</legend>
-            {{ form.as_p }}
+            {{ form|bootstrap }}
             <button type="submit" id="submit" disabled="disabled" class="btn">Select</button> <span id="availability"></span>
         </form>
     </div>

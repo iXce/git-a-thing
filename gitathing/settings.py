@@ -61,9 +61,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 't9^cr&amp;r957&amp;vx2k^o)r4sk%6@djm#g*4a#d*p*m2s-m*uj=%dp'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -110,8 +107,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 SOCIAL_AUTH_PIPELINE = (
     'social_auth.backends.pipeline.social.social_auth_user',
     'social_auth.backends.pipeline.misc.save_status_to_session',
-    'gitathing_web.authpipeline.redirect_to_usernameform',
-    'gitathing_web.authpipeline.username',
+    'gitathing_web.auth_pipeline.redirect_to_usernameform',
+    'gitathing_web.auth_pipeline.username',
     'social_auth.backends.pipeline.user.create_user',
     'social_auth.backends.pipeline.social.associate_user',
     'social_auth.backends.pipeline.social.load_extra_data',
@@ -147,6 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'social_auth',
     'licenses',
+    'bootstrapform',
     'gitathing_web',
 )
 

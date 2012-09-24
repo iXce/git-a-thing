@@ -20,9 +20,14 @@ How distribution works ?
 - git repos can be on any instance, and the central instance has a table listing which known instance has which repo
 - When a user accesses a design which is not available on the current instance, they get redirected to an instance which has the corresponding repo
 
-Dependencies
-============
+Included external dependencies
+==============================
+- Twitter Bootstrap, for CSS magic http://twitter.github.com/bootstrap/
+
+External dependencies
+=====================
 - Dulwich, for python-git interaction http://www.samba.org/~jelmer/dulwich/
-- django-social-auth for authentication handling https://github.com/omab/django-social-auth
-- django-rest-framework for the RESTful API http://django-rest-framework.org/
-- django-licenses for License management http://bitbucket.org/jezdez/django-licenses/
+- django-social-auth, for authentication handling https://github.com/omab/django-social-auth
+- django-rest-framework, for the RESTful API http://django-rest-framework.org/
+- django-licenses, for License management http://bitbucket.org/jezdez/django-licenses/
+- django-bootstrap-form, for prettier forms https://github.com/tzangms/django-bootstrap-form

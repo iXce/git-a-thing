@@ -19,6 +19,9 @@ DATABASES = {
     }
 }
 
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = 't9^cr&amp;r957&amp;vx2k^o)r4sk%6@djm#g*4a#d*p*m2s-m*uj=%dp'
+
 TWITTER_CONSUMER_KEY         = ''
 TWITTER_CONSUMER_SECRET      = ''
 FACEBOOK_APP_ID              = ''

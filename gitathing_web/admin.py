@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from gitathing_web.models import *
+from gitathing_web.models import Profile, Media, Design, Release, Build
 
 admin.site.register(Profile)
 admin.site.register(Media)
