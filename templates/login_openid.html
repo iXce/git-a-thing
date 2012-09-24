@@ -6,9 +6,9 @@
 {% block main %}
 <div class="row">
     <div class="span6 offset3">
-        <h3>Login using OpenId</h3>
         <form action="{% url "socialauth_begin" "openid" %}" method="post">
             {% csrf_token %}
+            <legend>Login using OpenId</legend>
             <p>
                 <label for="openid_identifier">OpenId</label>
                 <input id="openid_identifier" type="text" value="" name="openid_identifier" />
