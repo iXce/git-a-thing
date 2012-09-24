@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block extratitle%} &mdash; Login{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="span6 offset3">
+        <h2>Please login using one of the following providers :</h2>
+        <p class="login-providers">{% include "login_providers.html" %}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% load url from future %}
+{% with social_auth.backends.oauth2|add:social_auth.backends.oauth as backends %}
+    {% for name in backends %}
+        <a rel="nofollow" href="{% url "socialauth_begin" name %}{% if next %}?next={{ next }}{% endif %}"><img src="/static/authbuttons/{{ name|title|lower }}_32.png" alt="{{ name|title }}" /></a>
+  {% endfor %}{% endwith %}
+        <a rel="nofollow" href="{% url "gitathing_login_openid" %}{% if next %}?next={{ next }}{% endif %}"><img src="/static/authbuttons/openid_32.png" alt="OpenId" /></a>

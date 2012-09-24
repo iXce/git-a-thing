@@ -28,3 +28,8 @@
   display: block;
   float: left;
 }
+
+p.login-providers {
+  width: 100%;
+  text-align: center;
+}
