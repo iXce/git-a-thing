@@ -4,11 +4,19 @@ from django.contrib.messages.api import get_messages
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django import forms
+from django.http import Http404
 
 # Models
 from django.contrib.auth.models import User
 from gitathing_web.models import Profile, Media, Design, Release, Build
 
+def view_profile(request, user):
+    try:
+        user = User.objects.get(username = user)
+    except User.DoesNotExist:
+        raise Http404
+    profile, _ = Profile.objects.get_or_create(user = user)
+    return render(request, 'view_profile.html', {"profile": profile})
 
 def login_error(request):
     """Error view"""
@@ -33,6 +41,10 @@ class ProfileForm(forms.ModelForm):
     email = forms.EmailField(label=_(u"Email"), required = False)
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs["tabindex"] = 1
+        self.fields['display_name'].widget.attrs["tabindex"] = 2
+        self.fields['location'].widget.attrs["tabindex"] = 3
+        self.fields['about'].widget.attrs["tabindex"] = 4
         try:
             self.fields['email'].initial = self.instance.user.email
         except User.DoesNotExist:

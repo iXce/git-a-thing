@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from licenses.fields import LicenseField
+import urllib, hashlib
 
 class Profile(models.Model):
     """User profile"""
@@ -9,6 +10,16 @@ class Profile(models.Model):
     display_name = models.CharField(max_length = 100, blank = True)
     location = models.CharField(max_length = 100, blank = True)
     about = models.TextField("About me", blank = True)
+    
+    def mini_avatar(self):
+        return self.avatar(size = 32, default = "http://gitathing.org/static/img/unknown-mini.png")
+
+    def avatar(self, size = 120, default = "http://gitathing.org/static/img/unknown.png"):
+        """Gravatar fetching as from http://gravatar.com/site/implement/images/python/"""
+        email = self.user.email
+        gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
+        gravatar_url += urllib.urlencode({'d':default, 's':str(size)})
+        return gravatar_url
 
     def __unicode__(self):
         if self.display_name:
