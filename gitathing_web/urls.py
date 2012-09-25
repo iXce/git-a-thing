@@ -2,6 +2,8 @@
 from django.conf.urls.defaults import patterns, url
 from django.views.generic.simple import direct_to_template
 
+repo_regexp = "(?P<user>[\w.-]+)/(?P<design>[\w.-]+)"
+
 urlpatterns = patterns('',
     url(r'^username-form/$', 'gitathing_web.auth_views.username_form', name = 'gitathing_username_form'),
     url(r'^username-available/$', 'gitathing_web.auth_views.username_available', name = 'gitathing_username_available'),
@@ -10,6 +12,9 @@ urlpatterns = patterns('',
     url(r'^login-error/$', 'gitathing_web.user_views.login_error', name = 'gitathing_login_error'),
     url(r'^edit-profile/$', 'gitathing_web.user_views.edit_profile', name = 'gitathing_edit_profile'),
     url(r'^view-profile/(?P<user>[\w.-]+)$', 'gitathing_web.user_views.view_profile', name = 'gitathing_view_profile'),
+    url(r'^post-design/upload-design/%s$' % repo_regexp, 'gitathing_web.views.upload_design', name = 'gitathing_upload_design'),
+    url(r'^post-design/add-description/%s$' % repo_regexp, 'gitathing_web.views.add_description', name = 'gitathing_add_description'),
+    url(r'^post-design/publish-design/%s$' % repo_regexp, 'gitathing_web.views.publish_design', name = 'gitathing_publish_design'),
     url(r'^post-design/$', 'gitathing_web.views.post_design', name = 'gitathing_post_design'),
     url(r'^manage-designs/$', 'gitathing_web.views.manage_designs', name = 'gitathing_manage_designs'),
     url(r'^view-design/(?P<user>[\w.-]+)/(?P<design>[\w.-]+)$', 'gitathing_web.views.view_design', name = 'gitathing_view_design'),

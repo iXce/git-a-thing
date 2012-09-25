@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block extratitle%} &mdash; Post a new design / Add description &amp; instructions{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="row"> 
+        <div class="span6 offset3">
+            <h1>Post a new design</h1>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="span3">
+            <ul class="nav nav-tabs nav-stacked progress-nav">
+                <li><a>1) Create repo</a></li>
+                <li><a>2) Upload design</a></li>
+                <li class="active"><a><i class="icon-chevron-right"></i>3) Add description &amp; instructions</a></li>
+            </ul>
+        </div>
+        <div class="span6">
+            <h2>Add description &amp; instructions</h2>
+            <p>You're almost done ! You can now either add a description and some instructions, or directly publish your design !</p>
+            <form action="{% url "gitathing_publish_design" design.user design.short_name %}" method="post">
+                {{ form|bootstrap }}
+                <button class="btn" name="submit">Create repository</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

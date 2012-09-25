@@ -41,18 +41,22 @@ class Media(models.Model):
 
 class Design(models.Model):
     """Database entry for a git-repository (possibly pointing to a specific git branch)"""
-    designer = models.ForeignKey(User)
-    name = models.CharField(max_length = 150)
-    short_name = models.SlugField()
+    user = models.ForeignKey(User)
+    name = models.CharField("Design name", max_length = 150)
+    short_name = models.SlugField("Short repository name")
     repo_path = models.CharField(max_length = 80, editable = False, blank = True)
-    branch = models.CharField(max_length = 100, editable = False, blank = True, null = True)
+    branch = models.CharField(max_length = 100, editable = False, blank = True, null = True, default = "master")
     parent = models.ForeignKey("Design", null = True, blank = True)
     derived_from = models.ManyToManyField("Design", related_name = "derivatives")
     license = LicenseField()
     description = models.TextField(blank = True)
     instructions = models.TextField(blank = True)
+    public = models.BooleanField(default = False, blank = True)
     created = models.DateTimeField(auto_now_add = True)
     last_updated = models.DateTimeField(auto_now = True)
+
+    class Meta:
+        unique_together = (("user", "short_name", "branch"),)
 
 class Release(models.Model):
     """Database entry for a git-tag"""

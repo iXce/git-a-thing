@@ -47,3 +47,32 @@ form.profileform .control-group:nth-last-child(5) textarea {
     height: 150px;
     width: 100%;
 }
+
+.progress-nav li.active a, .progress-nav li.active a:link, .progress-nav li.active a:visited, .progress-nav li.active a:hover, .progress-nav li.active a:active {
+  background-color: #DD4814;
+  color: white;
+}
+
+.progress-nav li a, .progress-nav li a:link, .progress-nav li a:visited, .progress-nav li a:hover, .progress-nav li a {
+  background-color: #FFFFFF;
+  color: #DD4814;
+}
+
+.progress-nav i {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+
+.progress-nav .active i {
+  opacity: 1;
+}
+
+input.create-repo {
+  width: 406px;
+}
+
+select.license-select {
+  width: 420px;
+}

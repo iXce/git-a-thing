@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load bootstrap %}
+
+{% block extratitle%} &mdash; Post a new design / Create repository{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="row"> 
+        <div class="span6 offset3">
+            <h1>Post a new design</h1>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="span3">
+            <ul class="nav nav-tabs nav-stacked progress-nav">
+                <li class="active"><a><i class="icon-chevron-right"></i>1) Create repo</a></li>
+                <li><a>2) Upload design</a></li>
+                <li><a>3) Add description &amp; instructions</a></li>
+            </ul>
+        </div>
+        <div class="span6">
+            <h2>Create repository</h2>
+            <p>In this step, we'll create the <tt>git</tt> repository which will store your design.</p>
+            <form action="{% url "gitathing_post_design" %}" method="post">
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <button class="btn" name="submit">Create repository</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+             window.onload = function() {
+             $("#id_name").focus();
+            };
+        });
+    </script>
+{% endblock %}
